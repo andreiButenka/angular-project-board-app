@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import User from '../models/User';
-import CardList from '../models/CardList';
+import User from '../../models/User';
+import CardList from '../../models/CardList';
 
 @Component({
   selector: 'app-card-list',
