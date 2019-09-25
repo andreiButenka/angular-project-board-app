@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import User from '../models/User';
-import Card from '../models/Card';
+import User from '../../models/User';
+import Card from '../../models/Card';
 
 @Component({
   selector: 'app-card-item',
