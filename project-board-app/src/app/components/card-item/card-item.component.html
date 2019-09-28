@@ -1,1 +1,18 @@
-<p>card-item works!</p>
+<mat-card (click)="onExpand()">
+  <mat-card-header> 
+    <mat-card-title>{{ task.name }}</mat-card-title>
+  </mat-card-header>
+  <ng-container *ngIf="task.expanded===true">
+    <mat-card-content>
+      <p>{{ task.description}}</p>
+      <p>{{ task.dueDate | date:'medium'}}</p>
+      <p><span>{{ task.Assignee.firstName }}</span><span>{{ task.Assignee.lastName }}</span></p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="onEdit()">Edit</button>
+        <button mat-button (click)="onRemove()">Remove</button>
+    </mat-card-actions>
+  </ng-container>
+</mat-card>
+
+

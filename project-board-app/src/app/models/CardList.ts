@@ -1,9 +1,9 @@
 import User from './User';
+import Card from './Card';
 
 export default interface CardList {
     id: string;
     name: string;
-    description: string;
-    dueDate?: Date | string;
-    assignee?: User;
-  }
+    cards: Card[];
+    isDoneSection: boolean;
+}

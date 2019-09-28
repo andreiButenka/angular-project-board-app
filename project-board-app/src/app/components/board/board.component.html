@@ -1,2 +1,13 @@
-<p>board works!</p>
-<app-card-list></app-card-list>
+<div class="board">
+  <app-card-list 
+    *ngFor="let taskList of taskLists"
+    [taskList]="taskList"
+    [isDoneSection]="taskList.isDoneSection"
+    [searchCriterion]="searchCriterion"
+    (remove)="removeItem($event)"
+    (expand)="expandCard($event)"
+  ></app-card-list>
+</div>
+    
+
+

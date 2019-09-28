@@ -4,6 +4,7 @@ export default interface Card {
     id: string;
     name: string;
     description: string;
+    expanded: boolean;
     dueDate?: Date | string;
     assignee?: User;
   }

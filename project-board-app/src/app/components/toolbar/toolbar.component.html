@@ -1,12 +1,15 @@
-<form class="search-form">
-  <mat-form-field class="form-field" appearance="outline">
-    <mat-label>Name</mat-label>
-    <input matInput>
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
-  <button class="search-form-button" mat-button mat-raised-button color="primary" aria-label="search">
-    search
-  </button>
-</form>
+<mat-toolbar class="toolbar">
+  <form (submit)="onSearch()" class="search-form">
+    <mat-form-field class="form-field">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="searchCriterion" name="searchCriterion">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <button class="search-form-button" type="submit" mat-button mat-stroked-button aria-label="search">
+      search
+    </button>
+  </form>
+</mat-toolbar>
+
 
 

@@ -11,10 +11,21 @@ import { CardItemComponent } from './components/card-item/card-item.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
+
+
+import { 
+  MatButtonModule, 
+  MatInputModule, 
+  MatFormFieldModule, 
+  MatIconModule, 
+  MatToolbarModule, 
+  MatListModule,
+  MatCardModule
+} from '@angular/material';
+
+import { FilterPipe } from './pipes/filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -24,16 +35,21 @@ import {MatIconModule} from '@angular/material/icon';
     BoardComponent,
     CardListComponent,
     CardItemComponent,
-    FooterComponent
+    FooterComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule,
+    MatListModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
