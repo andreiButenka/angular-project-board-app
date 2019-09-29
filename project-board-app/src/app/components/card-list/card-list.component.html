@@ -1,8 +1,8 @@
-<p>{{ taskList.name }}</p>
+<p>{{ cardList.name }}</p>
 <app-card-item
-  *ngFor="let task of taskList.cards | filter:searchCriterion"
+  *ngFor="let card of cardList.cards | filter:searchCriterion"
   [class.done]="isDoneSection===true"
-  [task]="task"
+  [card]="card"
   (remove)="onRemove($event)"
   (expand)="onExpand($event)"
 ></app-card-item>

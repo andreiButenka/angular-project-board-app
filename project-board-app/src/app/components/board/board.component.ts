@@ -6,11 +6,11 @@ import Card from '../../models/Card';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.sass']
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent {
 
   @Input() public searchCriterion: string;
 
-  public readonly taskLists = [
+  public readonly cardLists = [
     {
       id: 1,
       name: 'Backlog',
@@ -21,7 +21,8 @@ export class BoardComponent implements OnInit {
           name: 'name1',
           description: 'description1',
           expanded: false,
-          dueDate: '2019-09-16T00:00:00Z',
+          isDone: false,
+          dueDate: '2019-10-07T00:00:00Z',
           Assignee: {
             id: 1,
             firstName: 'FirstName1',
@@ -33,7 +34,8 @@ export class BoardComponent implements OnInit {
           name: 'name2',
           description: 'description2',
           expanded: false,
-          dueDate: '2019-09-17T00:00:00Z',
+          isDone: false,
+          dueDate: '2019-10-05T00:00:00Z',
           Assignee: {
             id: 2,
             firstName: 'FirstName2',
@@ -45,7 +47,8 @@ export class BoardComponent implements OnInit {
           name: 'name3',
           description: 'description3',
           expanded: false,
-          dueDate: '2019-09-18T00:00:00Z',
+          isDone: false,
+          dueDate: '2019-10-03T00:00:00Z',
           Assignee: {
             id: 3,
             firstName: 'FirstName3',
@@ -64,7 +67,8 @@ export class BoardComponent implements OnInit {
           name: 'name4',
           description: 'description4',
           expanded: false,
-          dueDate: '2019-09-19T00:00:00Z',
+          isDone: false,
+          dueDate: '2019-11-19T00:00:00Z',
           Assignee: {
             id: 4,
             firstName: 'FirstName4',
@@ -76,7 +80,8 @@ export class BoardComponent implements OnInit {
           name: 'name5',
           description: 'description5',
           expanded: false,
-          dueDate: '2019-09-20T00:00:00Z',
+          isDone: false,
+          dueDate: '2019-09-30T00:00:00Z',
           Assignee: {
             id: 5,
             firstName: 'FirstName5',
@@ -88,7 +93,8 @@ export class BoardComponent implements OnInit {
           name: 'name6',
           description: 'description6',
           expanded: false,
-          dueDate: '2019-09-21T00:00:00Z',
+          isDone: false,
+          dueDate: '2019-11-21T00:00:00Z',
           Assignee: {
             id: 6,
             firstName: 'FirstName6',
@@ -107,7 +113,8 @@ export class BoardComponent implements OnInit {
           name: 'name7',
           description: 'description7',
           expanded: false,
-          dueDate: '2019-09-22T00:00:00Z',
+          isDone: true,
+          dueDate: '2019-09-30T00:00:00Z',
           Assignee: {
             id: 7,
             firstName: 'FirstName7',
@@ -119,7 +126,8 @@ export class BoardComponent implements OnInit {
           name: 'name8',
           description: 'description8',
           expanded: false,
-          dueDate: '2019-09-23T00:00:00Z',
+          isDone: true,
+          dueDate: '2019-11-23T00:00:00Z',
           Assignee: {
             id: 8,
             firstName: 'FirstName8',
@@ -131,7 +139,8 @@ export class BoardComponent implements OnInit {
           name: 'name9',
           description: 'description9',
           expanded: false,
-          dueDate: '2019-09-24T00:00:00Z',
+          isDone: true,
+          dueDate: '2019-11-24T00:00:00Z',
           Assignee: {
             id: 9,
             firstName: 'FirstName9',
@@ -143,19 +152,13 @@ export class BoardComponent implements OnInit {
   ];
 
 
-  constructor() { }
-
-  ngOnInit() {
-    
+  public removeCard({ cardList, card }) {
+    const index: number = cardList.cards.findIndex((existingTask: Card)=> existingTask.id === card.id);
+    cardList.cards.splice(index, 1);
   }
 
-  public removeItem({ taskList, task }) {
-    const index = taskList.cards.findIndex((existingTask: Card)=> existingTask.id === task.id);
-    taskList.cards.splice(index, 1);
-  }
-
-  public expandCard(task: Card) {
-    task.expanded = !task.expanded;
+  public expandCard(card: Card) {
+    card.expanded = !card.expanded;
   }
 
 }

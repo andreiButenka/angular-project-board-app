@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import User from '../../models/User';
 import Card from '../../models/Card';
 
 @Component({
@@ -8,13 +7,8 @@ import Card from '../../models/Card';
   styleUrls: ['./card-item.component.sass']
 })
 export class CardItemComponent {
-  // id: string;
-  // name: string;
-  // description: string;
-  // dueDate?: Date | string;
-  // assignee?: User;
-
-  @Input() public task: Card;
+  
+  @Input() public card: Card;
   
 
   @Output() public remove = new EventEmitter<Card>();
@@ -25,16 +19,16 @@ export class CardItemComponent {
 
 
   onRemove() {
-    this.remove.emit(this.task);
+    this.remove.emit(this.card);
   }
 
   onEdit() {
-    console.log(`Edit card ${this.task.id}`);
+    console.log(`Edit card ${this.card.id}`);
     // this.edit.emit(this.task);
   }
 
   onExpand() {
-    this.expand.emit(this.task);
+    this.expand.emit(this.card);
   }
 
 }

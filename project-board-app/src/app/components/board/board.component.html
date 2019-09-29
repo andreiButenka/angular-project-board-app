@@ -1,10 +1,10 @@
 <div class="board">
   <app-card-list 
-    *ngFor="let taskList of taskLists"
-    [taskList]="taskList"
-    [isDoneSection]="taskList.isDoneSection"
+    *ngFor="let cardList of cardLists"
+    [cardList]="cardList"
+    [isDoneSection]="cardList.isDoneSection"
     [searchCriterion]="searchCriterion"
-    (remove)="removeItem($event)"
+    (remove)="removeCard($event)"
     (expand)="expandCard($event)"
   ></app-card-list>
 </div>

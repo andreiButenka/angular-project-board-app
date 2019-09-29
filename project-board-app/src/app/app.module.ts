@@ -25,6 +25,7 @@ import {
 } from '@angular/material';
 
 import { FilterPipe } from './pipes/filter.pipe';
+import { ColorStateDirective } from './directives/color-state.directive';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     CardListComponent,
     CardItemComponent,
     FooterComponent,
-    FilterPipe
+    FilterPipe,
+    ColorStateDirective
   ],
   imports: [
     BrowserModule,
