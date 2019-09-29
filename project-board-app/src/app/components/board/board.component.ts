@@ -81,7 +81,7 @@ export class BoardComponent {
           description: 'description5',
           expanded: false,
           isDone: false,
-          dueDate: '2019-09-30T00:00:00Z',
+          dueDate: '2019-10-02T00:00:00Z',
           Assignee: {
             id: 5,
             firstName: 'FirstName5',
@@ -114,7 +114,7 @@ export class BoardComponent {
           description: 'description7',
           expanded: false,
           isDone: true,
-          dueDate: '2019-09-30T00:00:00Z',
+          dueDate: '2019-10-02T00:00:00Z',
           Assignee: {
             id: 7,
             firstName: 'FirstName7',

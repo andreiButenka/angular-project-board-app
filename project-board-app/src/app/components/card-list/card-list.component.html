@@ -1,10 +1,13 @@
-<p>{{ cardList.name }}</p>
-<app-card-item
-  *ngFor="let card of cardList.cards | filter:searchCriterion"
-  [class.done]="isDoneSection===true"
-  [card]="card"
-  (remove)="onRemove($event)"
-  (expand)="onExpand($event)"
-></app-card-item>
+<div class="tasklist">
+  <p class="tasklist-title">{{ cardList.name }}</p>
+  <app-card-item
+    *ngFor="let card of cardList.cards | filter:searchCriterion"
+    [class.done]="isDoneSection===true"
+    [card]="card"
+    (remove)="onRemove($event)"
+    (expand)="onExpand($event)"
+  ></app-card-item>
+</div>
+
 
 

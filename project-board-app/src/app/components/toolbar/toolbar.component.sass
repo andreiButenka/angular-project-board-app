@@ -1,5 +1,6 @@
 .toolbar
-  height: 100px
+  height: 60px
+  background-color: #3A3A3A
 
 .search-form
   display: flex
@@ -7,8 +8,22 @@
   align-items: center
   margin-left: 40px
   width: 350px
+  &-icon
+    font-size: 100%
+  &-button
+    padding: 4px 15px
+    background-color: #fff
 
-.search-form-button
-  padding: 6px 25px
-  
+::ng-deep .mat-form-field-infix 
+  border: 1px
+  padding: 15px 0 12px 0 !important
+
+::ng-deep .mat-form-field-wrapper
+  padding: 0
+  background-color: #fff
+  border-radius: 5px
+
+
+
+
 
