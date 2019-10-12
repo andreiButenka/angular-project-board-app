@@ -1,57 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CoreModule } from './core/core.module';
+import { BoardModule } from './board/board.module';
+import { AuthModule } from './auth/auth.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { BoardComponent } from './components/board/board.component';
-import { CardListComponent } from './components/card-list/card-list.component';
-import { CardItemComponent } from './components/card-item/card-item.component';
-import { FooterComponent } from './components/footer/footer.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { FormsModule } from '@angular/forms';
-
-
-import { 
-  MatButtonModule, 
-  MatInputModule, 
-  MatFormFieldModule, 
-  MatIconModule, 
-  MatToolbarModule, 
-  MatListModule,
-  MatCardModule
-} from '@angular/material';
-
-import { FilterPipe } from './pipes/filter.pipe';
-import { ColorStateDirective } from './directives/color-state.directive';
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    ToolbarComponent,
-    BoardComponent,
-    CardListComponent,
-    CardItemComponent,
-    FooterComponent,
-    FilterPipe,
-    ColorStateDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatListModule,
-    MatCardModule
+    CoreModule,
+    BoardModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

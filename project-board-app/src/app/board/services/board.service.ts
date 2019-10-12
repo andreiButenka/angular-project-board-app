@@ -1,14 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import Card from '../../models/Card';
+import { Injectable } from '@angular/core';
+import Card from '../models/Card';
+import { BoardModule } from '../board.module';
 
-@Component({
-  selector: 'app-board',
-  templateUrl: './board.component.html',
-  styleUrls: ['./board.component.sass']
-})
-export class BoardComponent {
-
-  @Input() public searchCriterion: string;
+@Injectable()
+export class BoardService {
 
   public readonly cardLists = [
     {
@@ -22,7 +17,7 @@ export class BoardComponent {
           description: 'description1',
           expanded: false,
           isDone: false,
-          dueDate: '2019-10-07T00:00:00Z',
+          dueDate: '2019-10-14T00:00:00Z',
           Assignee: {
             id: 1,
             firstName: 'FirstName1',
@@ -35,7 +30,7 @@ export class BoardComponent {
           description: 'description2',
           expanded: false,
           isDone: false,
-          dueDate: '2019-10-05T00:00:00Z',
+          dueDate: '2019-11-05T00:00:00Z',
           Assignee: {
             id: 2,
             firstName: 'FirstName2',
@@ -48,7 +43,7 @@ export class BoardComponent {
           description: 'description3',
           expanded: false,
           isDone: false,
-          dueDate: '2019-10-03T00:00:00Z',
+          dueDate: '2019-10-17T00:00:00Z',
           Assignee: {
             id: 3,
             firstName: 'FirstName3',
@@ -81,7 +76,7 @@ export class BoardComponent {
           description: 'description5',
           expanded: false,
           isDone: false,
-          dueDate: '2019-10-02T00:00:00Z',
+          dueDate: '2019-10-15T00:00:00Z',
           Assignee: {
             id: 5,
             firstName: 'FirstName5',
@@ -150,7 +145,6 @@ export class BoardComponent {
       ]
     },
   ];
-
 
   public removeCard({ cardList, card }) {
     const index: number = cardList.cards.findIndex((existingTask: Card)=> existingTask.id === card.id);
