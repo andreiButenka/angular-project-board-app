@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { BoardService } from '../../services/board.service';
 
 @Component({
-  selector: 'app-board',
-  templateUrl: './board.component.html',
-  styleUrls: ['./board.component.sass']
+  selector: 'app-board-page',
+  templateUrl: './board-page.component.html',
+  styleUrls: ['./board-page.component.sass']
 })
-export class BoardComponent implements OnInit {
+export class BoardPageComponent implements OnInit {
 
   @Input() public searchCriterion: string;
 

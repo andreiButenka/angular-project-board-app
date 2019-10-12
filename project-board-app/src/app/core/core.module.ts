@@ -4,6 +4,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CoreRoutingModule } from './core-routing.module';
 
+import { MatButtonModule } from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -12,7 +14,8 @@ import { CoreRoutingModule } from './core-routing.module';
   ],
   imports: [
     CommonModule,
-    CoreRoutingModule
+    CoreRoutingModule,
+    MatButtonModule
   ],
   exports: [
     HeaderComponent,

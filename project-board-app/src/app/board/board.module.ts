@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BoardRoutingModule } from './board-routing.module';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { BoardComponent } from './components/board/board.component';
+import { BoardPageComponent } from './pages/board-page/board-page.component';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { CardItemComponent } from './components/card-item/card-item.component';
 
@@ -28,7 +28,7 @@ import {
 @NgModule({
   declarations: [
     ToolbarComponent,
-    BoardComponent,
+    BoardPageComponent,
     CardListComponent,
     CardItemComponent,
     FilterPipe,
@@ -48,7 +48,7 @@ import {
   ],
   exports: [
     ToolbarComponent,
-    BoardComponent,
+    BoardPageComponent,
     CardListComponent,
     CardItemComponent,
     FilterPipe,
