@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import CardList from '../models/CardList';
 import Card from '../models/Card';
-import { BoardModule } from '../board.module';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class BoardService {
@@ -8,7 +9,7 @@ export class BoardService {
   public readonly cardLists = [
     {
       id: 1,
-      name: 'Backlog',
+      name: 'backlog',
       isDoneSection: false,
       cards: [
         {
@@ -54,7 +55,7 @@ export class BoardService {
     },
     {
       id: 2,
-      name: 'In progress',
+      name: 'in-progress',
       isDoneSection: false,
       cards: [
         {
@@ -100,7 +101,7 @@ export class BoardService {
     },
     {
       id: 3,
-      name: 'Done',
+      name: 'done',
       isDoneSection: true,
       cards: [
         {
@@ -145,6 +146,12 @@ export class BoardService {
       ]
     },
   ];
+
+  constructor(private router: Router) {}
+
+  public goToCreateTaskPage(cardList: CardList) {
+    this.router.navigateByUrl('/board/create-task/' + cardList.name);
+  }
 
   public removeCard({ cardList, card }) {
     const index: number = cardList.cards.findIndex((existingTask: Card)=> existingTask.id === card.id);

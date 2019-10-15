@@ -8,7 +8,7 @@ import { BoardService } from '../../services/board.service';
 })
 export class BoardPageComponent implements OnInit {
 
-  @Input() public searchCriterion: string;
+  public searchCriterion: string;
 
   public cardLists;
 
@@ -24,5 +24,13 @@ export class BoardPageComponent implements OnInit {
 
   public expandCard(args): void {
     this.boardService.expandCard(args);
+  }
+
+  public onSearch(criterion: string) {
+    this.searchCriterion = criterion;
+  }
+
+  public goToCreateTaskPage(args): void {
+    this.boardService.goToCreateTaskPage(args);
   }
 }

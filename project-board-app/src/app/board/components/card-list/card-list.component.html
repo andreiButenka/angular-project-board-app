@@ -1,5 +1,5 @@
 <div class="tasklist">
-  <p class="tasklist-title">{{ cardList.name }}</p>
+  <p class="tasklist-title">{{ cardList.name | titlecase | replace }}</p>
   <app-card-item
     *ngFor="let card of cardList.cards | filter:searchCriterion"
     [class.done]="isDoneSection===true"
@@ -7,7 +7,7 @@
     (remove)="onRemove($event)"
     (expand)="onExpand($event)"
   ></app-card-item>
-  <button mat-button>&#x2b; Create card</button>
+  <button mat-button (click)="onCreate($event)">&#x2b; Create card</button>
 </div>
 
 

@@ -23,6 +23,9 @@ import {
   MatListModule,
   MatCardModule
 } from '@angular/material';
+import { CreateTaskPageComponent } from './pages/create-task-page/create-task-page.component';
+import { EditTaskPageComponent } from './pages/edit-task-page/edit-task-page.component';
+import { ReplacePipe } from './pipes/replace.pipe';
 
 
 @NgModule({
@@ -32,7 +35,10 @@ import {
     CardListComponent,
     CardItemComponent,
     FilterPipe,
-    ColorStateDirective
+    ColorStateDirective,
+    CreateTaskPageComponent,
+    EditTaskPageComponent,
+    ReplacePipe
   ],
   imports: [
     CommonModule,
@@ -45,14 +51,6 @@ import {
     MatToolbarModule, 
     MatListModule,
     MatCardModule
-  ],
-  exports: [
-    ToolbarComponent,
-    BoardPageComponent,
-    CardListComponent,
-    CardItemComponent,
-    FilterPipe,
-    ColorStateDirective
   ],
   providers: [
     BoardService
