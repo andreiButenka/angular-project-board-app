@@ -6,7 +6,7 @@ export default interface Card {
     description: string;
     expanded: boolean;
     isDone: boolean;
-    dueDate?: Date | string;
-    assignee?: User;
+    dueDate?: string;
+    Assignee?: User;
   }
   

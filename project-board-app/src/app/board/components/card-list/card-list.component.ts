@@ -15,6 +15,7 @@ export class CardListComponent {
   @Output() public remove = new EventEmitter<{cardList: CardList; card: Card}>();
   @Output() public expand = new EventEmitter<Card>();
   @Output() public create = new EventEmitter<CardList>();
+  @Output() public edit = new EventEmitter<Card>();
 
   onRemove(card: Card) {
     this.remove.emit({
@@ -29,6 +30,10 @@ export class CardListComponent {
 
   onCreate(cardList: CardList) {
     this.create.emit(this.cardList);
+  }
+
+  onEdit(card: Card) {
+    this.edit.emit(card);
   }
 
 }

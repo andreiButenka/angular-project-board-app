@@ -8,7 +8,7 @@ import { EditTaskPageComponent } from './pages/edit-task-page/edit-task-page.com
 const routes: Routes = [
   { path: '', component: BoardPageComponent },
   { path: 'create-task/:name', component: CreateTaskPageComponent },
-  { path: 'edit-task', component: EditTaskPageComponent, pathMatch: 'full' }
+  { path: 'edit-task/:id', component: EditTaskPageComponent }
 ];
 
 @NgModule({

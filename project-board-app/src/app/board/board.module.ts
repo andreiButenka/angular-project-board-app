@@ -21,11 +21,16 @@ import {
   MatIconModule, 
   MatToolbarModule, 
   MatListModule,
-  MatCardModule
+  MatCardModule,
+  MatSelectModule,
+  MatOptionModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 import { CreateTaskPageComponent } from './pages/create-task-page/create-task-page.component';
 import { EditTaskPageComponent } from './pages/edit-task-page/edit-task-page.component';
 import { ReplacePipe } from './pipes/replace.pipe';
+import { TaskFormComponent } from './components/task-form/task-form.component';
 
 
 @NgModule({
@@ -38,7 +43,8 @@ import { ReplacePipe } from './pipes/replace.pipe';
     ColorStateDirective,
     CreateTaskPageComponent,
     EditTaskPageComponent,
-    ReplacePipe
+    ReplacePipe,
+    TaskFormComponent
   ],
   imports: [
     CommonModule,
@@ -50,7 +56,11 @@ import { ReplacePipe } from './pipes/replace.pipe';
     MatIconModule, 
     MatToolbarModule, 
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     BoardService

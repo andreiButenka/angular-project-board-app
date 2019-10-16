@@ -23,8 +23,7 @@ export class CardItemComponent {
   }
 
   onEdit() {
-    console.log(`Edit card ${this.card.id}`);
-    // this.edit.emit(this.task);
+    this.edit.emit(this.card);
   }
 
   onExpand() {

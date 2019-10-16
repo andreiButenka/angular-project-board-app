@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 @Injectable()
 export class BoardService {
 
+  public assignee: string;
+
   public readonly cardLists = [
     {
       id: 1,
@@ -13,7 +15,7 @@ export class BoardService {
       isDoneSection: false,
       cards: [
         {
-          id: 1,
+          id: '1',
           name: 'name1',
           description: 'description1',
           expanded: false,
@@ -26,7 +28,7 @@ export class BoardService {
           }
         },
         {
-          id: 2,
+          id: '2',
           name: 'name2',
           description: 'description2',
           expanded: false,
@@ -39,7 +41,7 @@ export class BoardService {
           }
         },
         {
-          id: 3,
+          id: '3',
           name: 'name3',
           description: 'description3',
           expanded: false,
@@ -59,7 +61,7 @@ export class BoardService {
       isDoneSection: false,
       cards: [
         {
-          id: 4,
+          id: '4',
           name: 'name4',
           description: 'description4',
           expanded: false,
@@ -72,7 +74,7 @@ export class BoardService {
           }
         },
         {
-          id: 5,
+          id: '5',
           name: 'name5',
           description: 'description5',
           expanded: false,
@@ -85,7 +87,7 @@ export class BoardService {
           }
         },
         {
-          id: 6,
+          id: '6',
           name: 'name6',
           description: 'description6',
           expanded: false,
@@ -105,7 +107,7 @@ export class BoardService {
       isDoneSection: true,
       cards: [
         {
-          id: 7,
+          id: '7',
           name: 'name7',
           description: 'description7',
           expanded: false,
@@ -118,7 +120,7 @@ export class BoardService {
           }
         },
         {
-          id: 8,
+          id: '8',
           name: 'name8',
           description: 'description8',
           expanded: false,
@@ -131,7 +133,7 @@ export class BoardService {
           }
         },
         {
-          id: 9,
+          id: '9',
           name: 'name9',
           description: 'description9',
           expanded: false,
@@ -147,10 +149,32 @@ export class BoardService {
     },
   ];
 
-  constructor(private router: Router) {}
+  public newCardID = 11;
+
+  public newCard = {
+    id: '',
+    name: '',
+    description: '',
+    expanded: false,
+    isDone: false,
+    dueDate: '',
+    Assignee: {
+      id: 1,
+      firstName: '',
+      lastName: ''
+    }
+  }
+
+  constructor(private router: Router) {
+ 
+  }
 
   public goToCreateTaskPage(cardList: CardList) {
     this.router.navigateByUrl('/board/create-task/' + cardList.name);
+  }
+
+  public goToEditTaskPage(card: Card) {
+    this.router.navigateByUrl('/board/edit-task/' + card.id);
   }
 
   public removeCard({ cardList, card }) {
@@ -161,5 +185,6 @@ export class BoardService {
   public expandCard(card: Card) {
     card.expanded = !card.expanded;
   }
+
 
 }

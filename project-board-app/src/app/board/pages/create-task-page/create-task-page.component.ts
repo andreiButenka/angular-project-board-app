@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BoardService } from '../../services/board.service';
+import Card from '../../models/Card';
 
 @Component({
   selector: 'app-create-task-page',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateTaskPageComponent implements OnInit {
 
-  constructor() { }
+  public cardListName: string;
+
+  public cardlists = this.boardService.cardLists;
+
+
+  constructor(private route: ActivatedRoute, private boardService: BoardService) { }
 
   ngOnInit() {
+    this.cardListName = this.route.snapshot.params.name;
   }
 
 }

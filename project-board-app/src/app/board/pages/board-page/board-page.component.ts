@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BoardService } from '../../services/board.service';
+import Card from '../../models/Card';
+import CardList from '../../models/CardList';
 
 @Component({
   selector: 'app-board-page',
@@ -30,7 +32,11 @@ export class BoardPageComponent implements OnInit {
     this.searchCriterion = criterion;
   }
 
-  public goToCreateTaskPage(args): void {
+  public goToCreateTaskPage(args: CardList): void {
     this.boardService.goToCreateTaskPage(args);
+  }
+
+  public goToEditTaskPage(args: Card): void {
+    this.boardService.goToEditTaskPage(args);
   }
 }
