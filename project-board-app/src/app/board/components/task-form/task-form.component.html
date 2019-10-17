@@ -2,12 +2,26 @@
   <form (submit)="onSave($event)">
     <p>
       <mat-form-field class="task-form-field" appearance="outline">
-        <input [(ngModel)]="goalCard.name" [value]="goalCard.name" class="task-form-input" matInput name="name" placeholder="Name">
+        <input 
+          [(ngModel)]="goalCard.name" 
+          [value]="goalCard.name" 
+          class="task-form-input" 
+          matInput 
+          name="name" 
+          placeholder="Name"
+        >
       </mat-form-field>
     </p>
     <p>
       <mat-form-field class="task-form-field" appearance="outline">
-        <input [(ngModel)]="goalCard.description" [value]="goalCard.description" class="task-form-input" matInput name="description" placeholder="Description">
+        <input 
+          [(ngModel)]="goalCard.description" 
+          [value]="goalCard.description" 
+          class="task-form-input" 
+          matInput 
+          name="description" 
+          placeholder="Description"
+        >
       </mat-form-field>
     </p>
     <p>
@@ -24,7 +38,14 @@
     </p>
     <p>
       <mat-form-field>
-        <input [(ngModel)]="goalCard.dueDate" [value]="goalCard.dueDate" matInput [matDatepicker]="picker" name="dueDate" placeholder="Due date">
+        <input 
+          [(ngModel)]="goalCard.dueDate" 
+          [value]="goalCard.dueDate" 
+          matInput 
+          [matDatepicker]="picker" 
+          name="dueDate" 
+          placeholder="Due date"
+        >
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>

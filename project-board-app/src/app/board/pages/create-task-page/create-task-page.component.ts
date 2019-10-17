@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BoardService } from '../../services/board.service';
 import { Router } from '@angular/router';
-import User from '../../models/User';
+import Cardlist from '../../models/CardList';
 import Card from '../../models/Card';
+import User from '../../models/User';
 
 @Component({
   selector: 'app-create-task-page',
@@ -18,26 +19,29 @@ export class CreateTaskPageComponent implements OnInit {
 
   public cardlists = this.boardService.cardLists;
 
-  public assignee: any;
+  public assignee: User;
 
 
-  constructor(private route: ActivatedRoute, private boardService: BoardService, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private boardService: BoardService, 
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.cardListName = this.route.snapshot.params.name;
   }
 
-  save(assignee: User): void {
-    const card = this.goalCard;
+  public save(assignee: User): void {
+    const card: Card = this.goalCard;
     card.id = String(this.boardService.goalCardID);
     card.Assignee = assignee;
     card.dueDate = new Date(this.goalCard.dueDate).toISOString();
-    this.boardService.cardLists.forEach(cardlist => {
+    this.boardService.cardLists.forEach((cardlist: Cardlist) => {
       if (cardlist.name === this.cardListName) {
         if (cardlist.name === 'done') {
           card.isDone = true;
         }
-        console.log(cardlist);
         cardlist.cards.push(card);
       }
     });
@@ -55,12 +59,9 @@ export class CreateTaskPageComponent implements OnInit {
     this.boardService.goalCardID += 1;
 
     this.router.navigateByUrl('/board');
-   
-    
-    // console.log(this.newCard);
   }
 
-  cancel() {
+  public cancel() {
     this.router.navigateByUrl('/board');
     this.boardService.goalCard = {
       id: '',
@@ -70,7 +71,7 @@ export class CreateTaskPageComponent implements OnInit {
       isDone: false,
       dueDate: '',
       Assignee: {
-        id: 1,
+        id: '',
         firstName: '',
         lastName: ''
       }

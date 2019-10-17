@@ -1,9 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BoardService } from '../../services/board.service';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
-import CardList from '../../models/CardList';
 import Card from '../../models/Card';
+import User from '../../models/User';
 
 @Component({
   selector: 'app-task-form',
@@ -12,38 +10,19 @@ import Card from '../../models/Card';
 })
 export class TaskFormComponent implements OnInit {
 
-  @Input() public goalCard: any; 
-  @Input() public assignee: any; 
+  @Input() public goalCard: Card; 
+  @Input() public assignee: User; 
+  @Output() public cancel = new EventEmitter<void>();
+  @Output() public save = new EventEmitter<User>();
 
-  public cardListName: 'string';
+  public assigneesList = this.boardService.extractAssignee(this.boardService.cardLists);
 
-  public assigneesList = this.extractAssignee(this.boardService.cardLists);
-
-  @Output() public cancel = new EventEmitter<any>();
-  @Output() public save = new EventEmitter<any>();
-
-
-  constructor(private route: ActivatedRoute, private boardService: BoardService, private router: Router) { }
+  constructor(private boardService: BoardService) { }
 
   ngOnInit() {
-    this.cardListName = this.route.snapshot.params.name;
     
-    console.log(this.assigneesList);
   }
-
   
-  extractAssignee(arr: any[]) {
-    let assignees = [];
-    arr.forEach((list: CardList) => {
-      list.cards.forEach((card: Card) => {
-        if (!assignees.includes(card.Assignee)) {
-          assignees.push(card.Assignee);
-        }
-      });
-    });
-    return assignees;
-  }
-
   onCancel() {
     this.cancel.emit();
   }
@@ -52,8 +31,4 @@ export class TaskFormComponent implements OnInit {
     this.save.emit(this.assignee);
   }
 
- 
-  
-
- 
 }

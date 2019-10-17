@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import CardList from '../models/CardList';
 import Card from '../models/Card';
+import User from '../models/User';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -10,7 +11,7 @@ export class BoardService {
 
   public readonly cardLists = [
     {
-      id: 1,
+      id: '1',
       name: 'backlog',
       isDoneSection: false,
       cards: [
@@ -22,7 +23,7 @@ export class BoardService {
           isDone: false,
           dueDate: '2019-10-14T00:00:00Z',
           Assignee: {
-            id: 1,
+            id: '1',
             firstName: 'FirstName1',
             lastName: 'LastName1'
           }
@@ -35,7 +36,7 @@ export class BoardService {
           isDone: false,
           dueDate: '2019-11-05T00:00:00Z',
           Assignee: {
-            id: 2,
+            id: '2',
             firstName: 'FirstName2',
             lastName: 'LastName2'
           }
@@ -48,7 +49,7 @@ export class BoardService {
           isDone: false,
           dueDate: '2019-10-17T00:00:00Z',
           Assignee: {
-            id: 3,
+            id: '3',
             firstName: 'FirstName3',
             lastName: 'LastName3'
           }
@@ -56,7 +57,7 @@ export class BoardService {
       ]
     },
     {
-      id: 2,
+      id: '2',
       name: 'in-progress',
       isDoneSection: false,
       cards: [
@@ -68,7 +69,7 @@ export class BoardService {
           isDone: false,
           dueDate: '2019-11-19T00:00:00Z',
           Assignee: {
-            id: 4,
+            id: '4',
             firstName: 'FirstName4',
             lastName: 'LastName4'
           }
@@ -81,7 +82,7 @@ export class BoardService {
           isDone: false,
           dueDate: '2019-10-15T00:00:00Z',
           Assignee: {
-            id: 5,
+            id: '5',
             firstName: 'FirstName5',
             lastName: 'LastName5'
           }
@@ -94,7 +95,7 @@ export class BoardService {
           isDone: false,
           dueDate: '2019-11-21T00:00:00Z',
           Assignee: {
-            id: 6,
+            id: '6',
             firstName: 'FirstName6',
             lastName: 'LastName6'
           }
@@ -102,7 +103,7 @@ export class BoardService {
       ]
     },
     {
-      id: 3,
+      id: '3',
       name: 'done',
       isDoneSection: true,
       cards: [
@@ -114,7 +115,7 @@ export class BoardService {
           isDone: true,
           dueDate: '2019-10-02T00:00:00Z',
           Assignee: {
-            id: 7,
+            id: '7',
             firstName: 'FirstName7',
             lastName: 'LastName7'
           }
@@ -127,7 +128,7 @@ export class BoardService {
           isDone: true,
           dueDate: '2019-11-23T00:00:00Z',
           Assignee: {
-            id: 8,
+            id: '8',
             firstName: 'FirstName8',
             lastName: 'LastName8'
           }
@@ -140,7 +141,7 @@ export class BoardService {
           isDone: true,
           dueDate: '2019-11-24T00:00:00Z',
           Assignee: {
-            id: 9,
+            id: '9',
             firstName: 'FirstName9',
             lastName: 'LastName9'
           }
@@ -151,7 +152,7 @@ export class BoardService {
 
   public goalCardID = 11;
 
-  public goalCard = {
+  public goalCard: Card = {
     id: '',
     name: '',
     description: '',
@@ -159,7 +160,7 @@ export class BoardService {
     isDone: false,
     dueDate: '',
     Assignee: {
-      id: 1,
+      id: '',
       firstName: '',
       lastName: ''
     }
@@ -184,6 +185,18 @@ export class BoardService {
 
   public expandCard(card: Card) {
     card.expanded = !card.expanded;
+  }
+
+  public extractAssignee(arr: CardList[]) {
+    let assignees: User[] = [];
+    arr.forEach((list: CardList) => {
+      list.cards.forEach((card: Card) => {
+        if (!assignees.includes(card.Assignee)) {
+          assignees.push(card.Assignee);
+        }
+      });
+    });
+    return assignees;
   }
 
   

@@ -4,6 +4,7 @@ import { BoardService } from '../../services/board.service';
 import { Router } from '@angular/router';
 import Card from '../../models/Card';
 import User from '../../models/User';
+import CardList from '../../models/CardList';
 
 @Component({
   selector: 'app-edit-task-page',
@@ -12,9 +13,9 @@ import User from '../../models/User';
 })
 export class EditTaskPageComponent implements OnInit {
 
-  public cardId: 'string';
+  public cardId: string;
 
-  public cardBackUp: any;
+  public cardBackUp: string;
 
   public goalCard: Card;
 
@@ -27,13 +28,12 @@ export class EditTaskPageComponent implements OnInit {
     this.goalCard = this.getCard(this.cardId);
     this.cardBackUp = JSON.stringify(this.goalCard);
     this.assignee = this.goalCard.Assignee;
-    console.log(this.cardBackUp);
   }
 
-  getCard(id: 'string'): Card {
+  public getCard(id: string): Card {
     let goalCard: Card;
-    this.boardService.cardLists.forEach(cardList => {
-      cardList.cards.forEach(card => {
+    this.boardService.cardLists.forEach((cardList: CardList) => {
+      cardList.cards.forEach((card: Card) => {
         if (card.id === id) {
           goalCard = card;
         }
@@ -42,24 +42,19 @@ export class EditTaskPageComponent implements OnInit {
     return goalCard;
   }
 
-  public backUp(cardLists, backUpcard) {
+  public backUp(cardLists: CardList[], backUpcard: string) {
     let backUpCard = JSON.parse(backUpcard);
-    let goalCardListIndex;
-    cardLists.forEach((cardList, index) => {
+    let goalCardListIndex: number;
+    cardLists.forEach((cardList: CardList, index: number) => {
       goalCardListIndex = index;
-      cardList.cards.forEach((card, index) => {
+      cardList.cards.forEach((card: Card, index: number) => {
         if (card.id === backUpCard.id) {
-          console.log('yes');
           cardLists[goalCardListIndex].cards[index] = backUpCard;
-          console.log(card);
-          console.log(backUpCard);
-          console.log(cardLists);
         }
       })
     })
     
   }
-
 
   save(assignee: User): void {
     this.goalCard.Assignee = assignee;

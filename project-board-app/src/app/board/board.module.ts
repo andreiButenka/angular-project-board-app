@@ -63,7 +63,7 @@ import { TaskFormComponent } from './components/task-form/task-form.component';
     MatNativeDateModule
   ],
   providers: [
-    BoardService
+    BoardService,
   ]
 })
 export class BoardModule { }

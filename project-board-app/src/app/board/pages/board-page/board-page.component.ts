@@ -12,7 +12,7 @@ export class BoardPageComponent implements OnInit {
 
   public searchCriterion: string;
 
-  public cardLists;
+  public cardLists: CardList[];
 
   constructor(private boardService: BoardService) {}
 
@@ -24,7 +24,7 @@ export class BoardPageComponent implements OnInit {
     this.boardService.removeCard(args);
   }
 
-  public expandCard(args): void {
+  public expandCard(args: Card): void {
     this.boardService.expandCard(args);
   }
 
