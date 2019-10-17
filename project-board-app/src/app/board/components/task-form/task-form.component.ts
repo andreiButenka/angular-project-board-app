@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BoardService } from '../../services/board.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -12,84 +12,47 @@ import Card from '../../models/Card';
 })
 export class TaskFormComponent implements OnInit {
 
+  @Input() public goalCard: any; 
+  @Input() public assignee: any; 
+
   public cardListName: 'string';
 
-  public assigneesList = [];
+  public assigneesList = this.extractAssignee(this.boardService.cardLists);
 
-  public newCard = this.boardService.newCard;
-  
+  @Output() public cancel = new EventEmitter<any>();
+  @Output() public save = new EventEmitter<any>();
 
-  public assignee = this.boardService.assignee;
 
   constructor(private route: ActivatedRoute, private boardService: BoardService, private router: Router) { }
 
   ngOnInit() {
     this.cardListName = this.route.snapshot.params.name;
-    this.assigneesList = this.extractAssignee(this.boardService.cardLists);
+    
     console.log(this.assigneesList);
   }
 
-  extractAssignee(arr: any) {
+  
+  extractAssignee(arr: any[]) {
     let assignees = [];
     arr.forEach((list: CardList) => {
       list.cards.forEach((card: Card) => {
-        assignees.push(card.Assignee);
+        if (!assignees.includes(card.Assignee)) {
+          assignees.push(card.Assignee);
+        }
       });
     });
     return assignees;
   }
 
-  onSave(): void {
-    const card = this.newCard;
-    card.id = String(this.boardService.newCardID);
-    card.Assignee.firstName = this.assignee.split(' ')[0];
-    card.Assignee.lastName = this.assignee.split(' ')[1];
-    card.dueDate = new Date(this.newCard.dueDate).toISOString();
-    this.boardService.cardLists.forEach(cardlist => {
-      if (cardlist.name === this.cardListName) {
-        console.log(cardlist);
-        cardlist.cards.push(card);
-      }
-    });
-
-    this.boardService.newCard = {
-      id: '',
-      name: '',
-      description: '',
-      expanded: false,
-      isDone: false,
-      dueDate: '',
-      Assignee: {
-        id: 1,
-        firstName: '',
-        lastName: ''
-      }
-    };
-    
-    this.boardService.newCardID += 1;
-
-    this.router.navigateByUrl('/board');
-   
-    
-    // console.log(this.newCard);
-  }
-
   onCancel() {
-    this.router.navigateByUrl('/board');
-    this.boardService.newCard = {
-      id: '',
-      name: '',
-      description: '',
-      expanded: false,
-      isDone: false,
-      dueDate: '',
-      Assignee: {
-        id: 1,
-        firstName: '',
-        lastName: ''
-      }
-    };
+    this.cancel.emit();
   }
+
+  onSave() {
+    this.save.emit(this.assignee);
+  }
+
+ 
   
 
  

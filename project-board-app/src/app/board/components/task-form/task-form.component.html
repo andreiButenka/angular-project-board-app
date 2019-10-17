@@ -1,21 +1,21 @@
 <div class="task-form-section">
-  <form #CardForm class="task-form" (submit)="onSave()">
+  <form (submit)="onSave($event)">
     <p>
       <mat-form-field class="task-form-field" appearance="outline">
-        <input [(ngModel)]="newCard.name" class="task-form-input" matInput name="name" placeholder="Name">
+        <input [(ngModel)]="goalCard.name" [value]="goalCard.name" class="task-form-input" matInput name="name" placeholder="Name">
       </mat-form-field>
     </p>
     <p>
       <mat-form-field class="task-form-field" appearance="outline">
-        <input [(ngModel)]="newCard.description" class="task-form-input" matInput name="description" placeholder="Description">
+        <input [(ngModel)]="goalCard.description" [value]="goalCard.description" class="task-form-input" matInput name="description" placeholder="Description">
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <mat-select [(ngModel)]="assignee" name="assignee" required>
+        <mat-select [(ngModel)]="assignee" [value]="goalCard.Assignee" name="assignee" required>
           <mat-option 
             *ngFor="let assignee of assigneesList" 
-            [value]="assignee.firstName + ' ' + assignee.lastName">
+            [value]="assignee">
             {{ assignee.firstName + ' ' + assignee.lastName }}
           </mat-option>
         </mat-select>
@@ -24,7 +24,7 @@
     </p>
     <p>
       <mat-form-field>
-        <input [(ngModel)]="newCard.dueDate" matInput [matDatepicker]="picker" name="dueDate" placeholder="Due date">
+        <input [(ngModel)]="goalCard.dueDate" [value]="goalCard.dueDate" matInput [matDatepicker]="picker" name="dueDate" placeholder="Due date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -32,7 +32,7 @@
     <button class="task-form-button" type="submit" mat-button mat-stroked-button>
       Save
     </button>
-    <button (click)="onCancel()" class="task-form-button" type="submit" mat-button mat-stroked-button>
+    <button (click)="onCancel()" class="task-form-button" type="button" mat-button mat-stroked-button>
       Cancel
     </button>
   </form>

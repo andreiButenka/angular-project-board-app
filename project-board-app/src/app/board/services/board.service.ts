@@ -149,9 +149,9 @@ export class BoardService {
     },
   ];
 
-  public newCardID = 11;
+  public goalCardID = 11;
 
-  public newCard = {
+  public goalCard = {
     id: '',
     name: '',
     description: '',
@@ -185,6 +185,8 @@ export class BoardService {
   public expandCard(card: Card) {
     card.expanded = !card.expanded;
   }
+
+  
 
 
 }
