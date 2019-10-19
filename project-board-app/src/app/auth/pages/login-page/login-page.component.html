@@ -2,12 +2,12 @@
 	<form class="login-form">
 		<p>
 				<mat-form-field class="login-form-field" appearance="outline">
-					<input class="login-form-input" matInput name="username" placeholder="username">
+					<input [(ngModel)]="loginData" class="login-form-input" matInput name="username" placeholder="username">
 				</mat-form-field>
 		</p>
 		<p>
 				<mat-form-field class="login-form-field" appearance="outline">
-					<input class="login-form-input" matInput name="password" placeholder="password">
+					<input [(ngModel)]="passwordData" class="login-form-input" matInput name="password" placeholder="password">
 				</mat-form-field>
 		</p>
 			<button class="login-form-button" type="submit" mat-button mat-stroked-button (click)="login()">

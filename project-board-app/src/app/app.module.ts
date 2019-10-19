@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoadingGuard } from './guards/loading-guard';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     CoreModule
   ],
-  providers: [],
+  providers: [
+    LoadingGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

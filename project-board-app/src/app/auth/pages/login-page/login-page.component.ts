@@ -10,11 +10,22 @@ export class LoginPageComponent implements OnInit {
 
   constructor(private loginService: LoginService) { }
 
+  public loginData = this.loginService.loginData;
+
+  public passwordData = this.loginService.passwordData;
+
+  public goalCridentials = this.loginService.cridentials;
+
   ngOnInit() {
   }
 
   login() {
-    this.loginService.login();
+    this.loginService.login(this.loginData, this.passwordData);
+    
+  }
+
+  logout() {
+    this.loginService.logout();
   }
 
 }

@@ -6,7 +6,6 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 import { FormsModule } from '@angular/forms';
 
-import { LoginService } from './services/login.service';
 
 import { 
   MatButtonModule, 
@@ -33,8 +32,5 @@ import {
     MatListModule,
     MatCardModule
   ],
-  providers: [
-    LoginService
-  ]
 })
 export class AuthModule { }
