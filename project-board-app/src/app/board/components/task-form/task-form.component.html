@@ -1,7 +1,8 @@
 <div class="task-form-section">
-  <form (submit)="onSave($event)">
+  <form class="task-form" (submit)="onSave($event)">
     <p>
       <mat-form-field class="task-form-field" appearance="outline">
+        <mat-label>Name</mat-label>
         <input 
           [(ngModel)]="goalCard.name" 
           [value]="goalCard.name" 
@@ -14,6 +15,7 @@
     </p>
     <p>
       <mat-form-field class="task-form-field" appearance="outline">
+        <mat-label>Description</mat-label>
         <input 
           [(ngModel)]="goalCard.description" 
           [value]="goalCard.description" 
@@ -25,19 +27,19 @@
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field>
-        <mat-select [(ngModel)]="assignee" [value]="goalCard.Assignee" name="assignee" required>
+      <mat-form-field appearance="outline">
+        <mat-select [(ngModel)]="assignee" [value]="goalCard.Assignee" name="assignee">
           <mat-option 
             *ngFor="let assignee of assigneesList" 
             [value]="assignee">
             {{ assignee.firstName + ' ' + assignee.lastName }}
           </mat-option>
         </mat-select>
-        <mat-label><mat-icon>person</mat-icon><i>Assignee</i></mat-label>
+        <mat-label><i>Assignee</i></mat-label>
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <input 
           [(ngModel)]="goalCard.dueDate" 
           [value]="goalCard.dueDate" 
@@ -48,6 +50,7 @@
         >
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-label><i>Due date</i></mat-label>
       </mat-form-field>
     </p>
     <button class="task-form-button" type="submit" mat-button mat-stroked-button>

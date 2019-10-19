@@ -9,6 +9,8 @@ export class BoardService {
 
   public assignee: string;
 
+  public searchCriterion: string;
+
   public readonly cardLists = [
     {
       id: '1',
@@ -168,6 +170,10 @@ export class BoardService {
 
   constructor(private router: Router) {
  
+  }
+
+  public onSearch(criterion: string) {
+    this.searchCriterion = criterion;
   }
 
   public goToCreateTaskPage(cardList: CardList) {

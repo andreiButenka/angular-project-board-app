@@ -19,16 +19,15 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
     if (localStorage.authToken) {
       this.router.navigateByUrl('/board');
-      
     }
   }
 
-  login() {
+  public login() {
     this.loginService.login(this.loginData, this.passwordData);
     
   }
 
-  logout() {
+  public logout() {
     this.loginService.logout();
   }
 

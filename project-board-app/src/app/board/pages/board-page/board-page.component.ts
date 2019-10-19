@@ -12,15 +12,15 @@ export class BoardPageComponent implements OnInit {
 
   public searchCriterion: string;
 
-  public cardLists: CardList[];
+  public cardLists = this.boardService.cardLists;
 
   constructor(private boardService: BoardService) {}
 
   public ngOnInit(): void {
-    this.cardLists = this.boardService.cardLists;
+     
   }
 
-  public removeCard(args): void {
+  public removeCard(args: { cardList: CardList; card: Card }): void {
     this.boardService.removeCard(args);
   }
 
@@ -29,7 +29,8 @@ export class BoardPageComponent implements OnInit {
   }
 
   public onSearch(criterion: string) {
-    this.searchCriterion = criterion;
+    this.boardService.onSearch(criterion);
+    this.searchCriterion = this.boardService.searchCriterion;
   }
 
   public goToCreateTaskPage(args: CardList): void {
