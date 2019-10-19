@@ -11,22 +11,16 @@ export class LoginService {
 
   public passwordData: string;
 
-  public loginState$ = new BehaviorSubject<any>({ 'test': 'Login'});
+  public loginState$ = new BehaviorSubject<any>({ 'status': 'Login'});
   
-
-  public cridentials = {
-    login: 'admin',
-    password: 'admin'
-  }
-
   constructor(private router: Router) { }
 
   public login(login: string, password: string) {
  
     if (login && password) {
-      localStorage.setItem('authToken', `${login}${password}`);
-      this.loginState$.next({ 'test': `logged in as: ${login} ${password} | logout` });
-      // console.log(localStorage);
+      localStorage.setItem('authToken', `${login} ${password}`);
+      this.loginState$.next({ 'credentials': `logged in as: '${localStorage.authToken}'`,
+                              'status': 'Logout' });
       
       this.router.navigateByUrl('/board');
     }
@@ -34,11 +28,9 @@ export class LoginService {
 
   public logout() {
     localStorage.clear();
-    this.loginState$.next({ 'test': 'login' });
+    this.loginState$.next({ 'status': 'Login' });
     this.router.navigateByUrl('/login-page');
   }
 
-  // public onLogin() {
-    
-  // }
+ 
 }

@@ -9,28 +9,25 @@ import { Observable } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   
-  public loginData$;
+  public loginData$: string;
 
-  public login;
-
-  constructor(private loginSevice: LoginService) { 
+  constructor(private loginService: LoginService) { 
     
   }
 
   ngOnInit() {
   
-    this.loginSevice.loginState$.subscribe(val => {
+    this.loginService.loginState$.subscribe(val => {
       this.loginData$ = val;
-      console.log('header', val);
-    })
-
-    // console.log('header', this.loginSevice.cridentials);
+    });
+    if (localStorage.authToken) {
+      this.loginService.loginState$.next({ 'credentials': `logged in as: '${localStorage.authToken}'`,
+                                            'status': 'Logout' });
+    }
   }
 
   onLogout() {
-    this.loginSevice.logout();
+    this.loginService.logout();
   }
-
- 
 
 }

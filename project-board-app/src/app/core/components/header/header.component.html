@@ -1,5 +1,9 @@
 <div class="header">
   <img class="logo" src="assets/img/logo.png" alt="logo">
-  <button (click)="onLogout()" mat-raised-button color="primary">{{ loginData$.test }}</button>
+  <div class="login-controls">
+    <span class="login-controls-credentials">{{ loginData$.credentials }}</span>
+    <button (click)="onLogout()" mat-raised-button color="primary">{{ loginData$.status }}</button>
+  </div>
+  
 </div>
 

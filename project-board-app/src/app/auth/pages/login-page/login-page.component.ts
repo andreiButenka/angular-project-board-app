@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -8,15 +9,18 @@ import { LoginService } from '../../services/login.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   public loginData = this.loginService.loginData;
 
   public passwordData = this.loginService.passwordData;
 
-  public goalCridentials = this.loginService.cridentials;
 
   ngOnInit() {
+    if (localStorage.authToken) {
+      this.router.navigateByUrl('/board');
+      
+    }
   }
 
   login() {
