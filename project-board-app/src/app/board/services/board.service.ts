@@ -23,7 +23,7 @@ export class BoardService {
           description: 'description1',
           expanded: false,
           isDone: false,
-          dueDate: '2019-10-14T00:00:00Z',
+          dueDate: '2019-12-14T00:00:00Z',
           Assignee: {
             id: '1',
             firstName: 'FirstName1',
@@ -36,7 +36,7 @@ export class BoardService {
           description: 'description2',
           expanded: false,
           isDone: false,
-          dueDate: '2019-11-05T00:00:00Z',
+          dueDate: '2019-11-15T00:00:00Z',
           Assignee: {
             id: '2',
             firstName: 'FirstName2',
@@ -49,7 +49,7 @@ export class BoardService {
           description: 'description3',
           expanded: false,
           isDone: false,
-          dueDate: '2019-10-17T00:00:00Z',
+          dueDate: '2019-12-17T00:00:00Z',
           Assignee: {
             id: '3',
             firstName: 'FirstName3',
@@ -82,7 +82,7 @@ export class BoardService {
           description: 'description5',
           expanded: false,
           isDone: false,
-          dueDate: '2019-10-15T00:00:00Z',
+          dueDate: '2019-12-15T00:00:00Z',
           Assignee: {
             id: '5',
             firstName: 'FirstName5',
